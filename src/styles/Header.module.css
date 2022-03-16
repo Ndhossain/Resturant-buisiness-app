@@ -1,0 +1,30 @@
+.heroSec {
+    height: 755px;
+    width: 100%;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerContent {
+    width: 50%;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3em;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    border-radius: 6px;
+}
+
+@media only screen and (max-width: 500px) {
+    .headerContent {
+        display: none;
+    }
+}
