@@ -1,5 +1,28 @@
+import useFetch from "./hooks/useFetch";
+import classes from "../styles/FoodCatalog.module.css"
+
 export default function FoodCatalog() {
-    return (
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint aliquam mollitia nobis? Placeat officia ea repellat dolor sint velit, earum deserunt dolorum quisquam ipsam voluptatibus perspiciatis iste dolorem consequatur facilis?</p>
-    )
+  const { loading, error, result } = useFetch(
+    "https://www.themealdb.com/api/json/v1/1/categories.php",
+    "GET"
+  );
+
+  const category = result ? result?.categories : [];
+
+  return (
+    <>
+      {loading && <div>Loading....</div>}
+      {error && <div>An error occured!</div>}
+      {!loading && !error && category.length > 0 && (
+        <div className={classes.cateItems}>
+          {category.map((item) => (
+            <div className={classes.cateItem} key={item.idCategory}>
+              <img src={item.strCategoryThumb} alt={item.strCategory} />
+              <h4>{item.strCategory}</h4>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
 }

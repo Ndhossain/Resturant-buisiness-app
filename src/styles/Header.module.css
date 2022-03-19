@@ -3,8 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 700px;
-    transition-delay: 1s;
-    transition-timing-function: ease-in-out;
 }
 
 .heroSec>img {
@@ -14,6 +12,8 @@
     position: absolute;
     top: 0;
     z-index: -1;
+    transition: width 1s;
+    transition-timing-function: ease-in-out;
 }
 
 .headerContent {

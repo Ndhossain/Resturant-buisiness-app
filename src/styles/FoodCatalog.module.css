@@ -1,0 +1,12 @@
+.cateItems {
+    display: flex;
+    overflow: hidden;
+}
+
+.cateItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    width: 30%;
+}
