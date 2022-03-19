@@ -1,5 +1,5 @@
+import classes from "../styles/FoodCatalog.module.css";
 import useFetch from "./hooks/useFetch";
-import classes from "../styles/FoodCatalog.module.css"
 
 export default function FoodCatalog() {
   const { loading, error, result } = useFetch(
