@@ -1,0 +1,28 @@
+.slider {
+  display: flex;
+}
+
+.hider {
+  overflow: hidden;
+}
+
+.cateItems {
+  display: flex;
+  transition: 0.2s;
+}
+
+.Arrow {
+  width: 2.8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  margin: 0 1%;
+  padding: .8%;
+  z-index: 5;
+}
+
+.Arrow:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

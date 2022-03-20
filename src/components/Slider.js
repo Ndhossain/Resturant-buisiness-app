@@ -1,13 +1,19 @@
 import { useState } from "react";
-import classes from "../styles/FoodCatalog.module.css";
+import classes from "../styles/Slider.module.css";
+import CateItemSlider from "./CateItemSlider";
 import useFetch from "./hooks/useFetch";
-import SlideItem from "./SlideItems";
-
-console.log(classes);
 
 export default function Slider({ url }) {
   const [x, setX] = useState(0);
   const { loading, error, result } = useFetch(url, "GET");
+
+  function leftClick() {
+    x <= 0 ? setX(x - 16.65) : setX(0)
+  }
+
+  function rightClick() {
+    x >= -133.2 ? setX(x + 16.65) : setX(0)
+  }
 
   const category = result ? result?.categories : [];
 
@@ -16,26 +22,33 @@ export default function Slider({ url }) {
       {loading && <div>Loading....</div>}
       {error && <div>An error occured!</div>}
       {!loading && !error && category.length > 0 && (
-        <div
-          className={classes.cateItems}
-          style={{ transform: `translateX(${x}%)` }}
-        >
-          <div className={classes.leftArrow}>
-            <h2 className={`material-icons-outlined`}>navigate_before</h2>
+        <div  onClick={leftClick} className={classes.slider}>
+          <div className={classes.Arrow}>
+            <h4 className={`material-icons-outlined`}>
+              navigate_before
+            </h4>
           </div>
 
-          <div className={classes.rightArrow}>
-            <h2 className={`material-icons-outlined`}>navigate_next</h2>
+          <div className={classes.hider}>
+          <div
+            className={classes.cateItems}
+            style={{ transform: `translateX(${x}%)` }}
+          >
+            {category.map((item) => (
+              <CateItemSlider
+                key={item.idCategory}
+                title={item.strCategory}
+                imageSource={item.strCategoryThumb}
+              />
+            ))}
+          </div>
           </div>
 
-          {category.map((item) => (
-            <SlideItem
-              key={item.idCategory}
-              title={item.strCategory}
-              imageSource={item.strCategoryThumb}
-              styles={classes.cateItem}
-            />
-          ))}
+          <div onClick={rightClick} className={classes.Arrow}>
+            <h4 className={`material-icons-outlined`}>
+              navigate_next
+            </h4>
+          </div>
         </div>
       )}
     </>
