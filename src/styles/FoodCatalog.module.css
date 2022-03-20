@@ -1,15 +1,30 @@
 .cateItems {
-    display: flex;
-    overflow: hidden;
-    flex-basis: 50%;
+  display: flex;
+  overflow: hidden;
+  flex-basis: 50%;
+  position: relative;
 }
 
-.cateItem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 1%;
-    background: rgba(255, 255, 255, 0.2);
-    min-width: 31.3%;
-    padding: 1.5%;
+.leftArrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.rightArrow {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: 1.3%;
+}
+
+.cateItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1%;
+  background: rgba(255, 255, 255, 0.2);
+  min-width: 31.3%;
+  padding: 1.5%;
 }

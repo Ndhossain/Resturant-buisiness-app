@@ -1,11 +1,11 @@
 import Header from "../Header"
-import FoodCatalog from "../FoodCatalog"
+import Slider from "../Slider"
 
 export default function Home() {
     return (
         <>
             <Header />
-            <FoodCatalog />
+            <Slider url="https://www.themealdb.com/api/json/v1/1/categories.php" />
         </>
     )
 }
