@@ -1,19 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "../styles/Slider.module.css";
 import CateItemSlider from "./CateItemSlider";
 import useFetch from "./hooks/useFetch";
 
 export default function Slider({ url }) {
   const [x, setX] = useState(0);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
   const { loading, error, result } = useFetch(url, "GET");
-  console.log(x)
 
-  function leftClick() {
-    setX((prevX) => prevX - 16.65);
-  }
+  console.log("componenet rendering");
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", changeWidth);
+
+    const slidertimer = setTimeout(() => {
+      setX((prevX) =>
+        windowSize >= 680
+          ? prevX >= -(16.65 * (result?.categories.length - 7))
+            ? prevX - 16.65
+            : setX(0)
+          : prevX >= -(33.3 * (result?.categories.length - 4))
+          ? prevX - 33.3
+          : setX(0)
+      );
+    }, 3000);
+
+    return () => {
+      clearTimeout(slidertimer);
+      window.removeEventListener("resize", changeWidth);
+    };
+  });
+
+  const leftClick = () => {
+    setX((prevX) =>
+      windowSize >= 680
+        ? prevX >= -(16.65 * (result?.categories.length - 7))
+          ? prevX - 16.65
+          : setX(0)
+        : prevX >= -(33.3 * (result?.categories.length - 4))
+        ? prevX - 33.3
+        : setX(0)
+    );
+  };
 
   function rightClick() {
-    setX((prevX) => prevX + 16.65);
+    setX((prevX) =>
+      windowSize >= 680
+        ? prevX < 0
+          ? prevX + 16.65
+          : setX(-(33.3 * (result?.categories.length - 3)))
+        : prevX < 0
+        ? prevX + 33.3
+        : setX(-(33.3 * (result?.categories.length - 3)))
+    );
   }
 
   const category = result ? result?.categories : [];
