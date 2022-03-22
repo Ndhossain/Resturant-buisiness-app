@@ -12,13 +12,13 @@ export default function Sidebar() {
                 </li>
                 <li>
                     All Meals
-                    <span class="material-icons-outlined">
+                    <span className="material-icons-outlined">
                         expand_more
                     </span>
                 </li>
                 <li>
                     All Meals
-                    <span class="material-icons-outlined">
+                    <span className="material-icons-outlined">
                         expand_more
                     </span>
                 </li>

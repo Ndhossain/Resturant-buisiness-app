@@ -19,7 +19,7 @@ export default function Slider({ url }) {
     const slidertimer = setTimeout(() => {
       setX((prevX) =>
         windowSize > 680
-          ? prevX >= -(16.65 * (result?.categories.length - 6))
+          ? prevX >= -(16.65 * (result?.categories.length - 6.2))
             ? prevX - 16.65
             : setX(0)
           : prevX >= -(33.3 * (result?.categories.length - 3))
@@ -37,7 +37,7 @@ export default function Slider({ url }) {
   const leftClick = () => {
     setX((prevX) =>
       windowSize > 680
-        ? prevX >= -(16.65 * (result?.categories.length - 7))
+        ? prevX >= -(16.65 * (result?.categories.length - 6.2))
           ? prevX - 16.65
           : setX(0)
         : prevX >= -(33.3 * (result?.categories.length - 3))
@@ -51,7 +51,7 @@ export default function Slider({ url }) {
       windowSize > 680
         ? prevX < 0
           ? prevX + 16.65
-          : setX(-(33.3 * (result?.categories.length - 3)))
+          : setX(-(16.65 * (result?.categories.length - 6)))
         : prevX < 0
         ? prevX + 33.3
         : setX(-(33.3 * (result?.categories.length - 3)))
