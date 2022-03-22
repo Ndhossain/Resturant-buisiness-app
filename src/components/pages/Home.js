@@ -1,13 +1,13 @@
 import Header from "../Header"
 import CategoriesSlide from "../CategoriesSlide"
-import Allmeals from "../Allmeals"
+import Sidebar from "../Sidebar"
 
 export default function Home() {
     return (
         <>
             <Header />
             <CategoriesSlide />
-            <Allmeals />
+            <Sidebar />
         </>
     )
 }
