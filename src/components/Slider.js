@@ -8,7 +8,6 @@ export default function Slider({ url }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const { loading, error, result } = useFetch(url, "GET");
 
-  console.log("componenet rendering");
 
   useEffect(() => {
     const changeWidth = () => {
@@ -19,11 +18,11 @@ export default function Slider({ url }) {
 
     const slidertimer = setTimeout(() => {
       setX((prevX) =>
-        windowSize >= 680
+        windowSize > 680
           ? prevX >= -(16.65 * (result?.categories.length - 7))
             ? prevX - 16.65
             : setX(0)
-          : prevX >= -(33.3 * (result?.categories.length - 4))
+          : prevX >= -(33.3 * (result?.categories.length - 3))
           ? prevX - 33.3
           : setX(0)
       );
@@ -37,11 +36,11 @@ export default function Slider({ url }) {
 
   const leftClick = () => {
     setX((prevX) =>
-      windowSize >= 680
+      windowSize > 680
         ? prevX >= -(16.65 * (result?.categories.length - 7))
           ? prevX - 16.65
           : setX(0)
-        : prevX >= -(33.3 * (result?.categories.length - 4))
+        : prevX >= -(33.3 * (result?.categories.length - 3))
         ? prevX - 33.3
         : setX(0)
     );
@@ -49,7 +48,7 @@ export default function Slider({ url }) {
 
   function rightClick() {
     setX((prevX) =>
-      windowSize >= 680
+      windowSize > 680
         ? prevX < 0
           ? prevX + 16.65
           : setX(-(33.3 * (result?.categories.length - 3)))
