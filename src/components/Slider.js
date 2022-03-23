@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import classes from "../styles/Slider.module.css";
 import CateItemSlider from "./CateItemSlider";
-import useFetch from "./hooks/useFetch";
+import withCategories from "./HOC/withCategories";
 
-export default function Slider({ url }) {
+function Slider({ cateLoading, cateError, cateResult }) {
   const [x, setX] = useState(0);
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const { loading, error, result } = useFetch(url, "GET");
-
-
+  const category = cateResult ? cateResult?.categories : [];
   useEffect(() => {
     const changeWidth = () => {
       setWindowSize(window.innerWidth);
@@ -19,10 +17,10 @@ export default function Slider({ url }) {
     const slidertimer = setTimeout(() => {
       setX((prevX) =>
         windowSize > 680
-          ? prevX >= -(16.65 * (result?.categories.length - 6.2))
+          ? prevX >= -(16.65 * (category.length - 6.2))
             ? prevX - 16.65
             : setX(0)
-          : prevX >= -(33.3 * (result?.categories.length - 3))
+          : prevX >= -(33.3 * (category.length - 3))
           ? prevX - 33.3
           : setX(0)
       );
@@ -37,10 +35,10 @@ export default function Slider({ url }) {
   const leftClick = () => {
     setX((prevX) =>
       windowSize > 680
-        ? prevX >= -(16.65 * (result?.categories.length - 6.2))
+        ? prevX >= -(16.65 * (category.length - 6.2))
           ? prevX - 16.65
           : setX(0)
-        : prevX >= -(33.3 * (result?.categories.length - 3))
+        : prevX >= -(33.3 * (category.length - 3))
         ? prevX - 33.3
         : setX(0)
     );
@@ -51,20 +49,18 @@ export default function Slider({ url }) {
       windowSize > 680
         ? prevX < 0
           ? prevX + 16.65
-          : setX(-(16.65 * (result?.categories.length - 6)))
+          : setX(-(16.65 * (category.length - 6)))
         : prevX < 0
         ? prevX + 33.3
-        : setX(-(33.3 * (result?.categories.length - 3)))
+        : setX(-(33.3 * (category.length - 3)))
     );
   }
 
-  const category = result ? result?.categories : [];
-
   return (
     <>
-      {loading && <div>Loading....</div>}
-      {error && <div>An error occured!</div>}
-      {!loading && !error && category.length > 0 && (
+      {cateLoading && <div>Loading....</div>}
+      {cateError && <div>An error occured!</div>}
+      {!cateLoading && !cateError && category.length > 0 && (
         <div className={classes.slider}>
           <div onClick={leftClick} className={classes.Arrow}>
             <h4 className={`material-icons-outlined`}>navigate_before</h4>
@@ -93,3 +89,5 @@ export default function Slider({ url }) {
     </>
   );
 }
+
+export default withCategories(Slider);

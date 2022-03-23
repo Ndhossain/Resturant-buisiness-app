@@ -11,7 +11,7 @@ export default function CategoriesSlide() {
       >
         CATEGORIES
       </h1>
-      <Slider url="https://www.themealdb.com/api/json/v1/1/categories.php" />
+      <Slider />
     </div>
   );
 }
