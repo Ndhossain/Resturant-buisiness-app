@@ -10,13 +10,16 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
     "GET"
   );
   const area = result ? result?.meals : [];
+  const category = cateResult ? cateResult?.categories : [];
 
-  const handleSideBarItemClick = () => {
-    setToggleSidebar(!toggleSidebar);
+  const handleSideBarItemClick = (e) => {
+    console.dir(e.target);
+    if (e.target) {
+      e.target.innerText = 'j'
+    }
   };
 
   console.log(result ? result?.meals : []);
-  const category = cateResult ? cateResult?.categories : [];
   return (
     <div className={classes.sidebar}>
       {cateLoading && <div>Loading....</div>}
@@ -30,27 +33,11 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
                     </span> */}
           </li>
           {category.map((item) => (
-            <>
-              <li key={item.idCategory} onClick={item.strCategory && handleSideBarItemClick}>
-                <img src={item.strCategoryThumb} alt={item.strCategory} />
-                {item.strCategory}
-                <span className="material-icons-outlined">expand_more</span>
-              </li>
-              {toggleSidebar && (
-                  <>
-                  {loading && <div>Loading....</div>}
-              {error && <div>An error occured!</div>}
-              {!loading && !error && area.length > 0 && (
-                <ul key={2}>
-                  <li>All</li>
-                  {area.map((areas, index) => (
-                    <li key={index}>{areas.strArea}</li>
-                  ))}
-                </ul>
-              )}
-                  </>
-              )}
-            </>
+            <li key={item.idCategory} onClick={handleSideBarItemClick}>
+              <img src={item.strCategoryThumb} alt={item.strCategory} />
+              {item.strCategory}
+              {/* <span className="material-icons-outlined">expand_more</span> */}
+            </li>
           ))}
         </ul>
       )}
