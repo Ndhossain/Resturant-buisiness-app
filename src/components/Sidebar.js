@@ -22,7 +22,7 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
       {cateLoading && <div>Loading....</div>}
       {cateError && <div>An error occured!</div>}
       {!cateLoading && !cateError && category.length > 0 && (
-        <ul>
+        <ul key={1}>
           <li>
             All Items
             {/* <span class="material-icons-outlined">
@@ -41,7 +41,7 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
                   {loading && <div>Loading....</div>}
               {error && <div>An error occured!</div>}
               {!loading && !error && area.length > 0 && (
-                <ul>
+                <ul key={2}>
                   <li>All</li>
                   {area.map((areas, index) => (
                     <li key={index}>{areas.strArea}</li>
