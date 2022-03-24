@@ -13,31 +13,47 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
   const category = cateResult ? cateResult?.categories : [];
 
   const handleSideBarItemClick = (e) => {
-    console.dir(e.target);
     if (e.target) {
-      e.target.innerText = 'j'
-    }
+      e.target.parentElement.style.height === "57px"
+        ? (e.target.parentElement.style = "height : 100%")
+        (e.target.lastChild.innerText = "expand_less")
+        : (e.target.parentElement.style = "height : 57px")
+        (e.target.lastChild.innerText = "expand_more")
+    };
   };
 
-  console.log(result ? result?.meals : []);
   return (
     <div className={classes.sidebar}>
       {cateLoading && <div>Loading....</div>}
       {cateError && <div>An error occured!</div>}
       {!cateLoading && !cateError && category.length > 0 && (
-        <ul key={1}>
-          <li>
-            All Items
-            {/* <span class="material-icons-outlined">
+        <ul>
+          <div>
+            <li>
+              All Items
+              {/* <span class="material-icons-outlined">
                         expand_less
                     </span> */}
-          </li>
-          {category.map((item) => (
-            <li key={item.idCategory} onClick={handleSideBarItemClick}>
-              <img src={item.strCategoryThumb} alt={item.strCategory} />
-              {item.strCategory}
-              {/* <span className="material-icons-outlined">expand_more</span> */}
             </li>
+          </div>
+          {category.map((item) => (
+            <div
+              key={item.idCategory}
+              onClick={handleSideBarItemClick}
+              style={{ height: "57px" }}
+            >
+              <li>
+                <img src={item.strCategoryThumb} alt={item.strCategory} />
+                {item.strCategory}
+                <span className="material-icons-outlined">expand_more</span>
+              </li>
+              <ul key={5555555}>
+                <li>All</li>
+                {area.map((item, index) => (
+                  <li key={index}>{item.strArea}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </ul>
       )}

@@ -2,7 +2,12 @@
     width: 24%;
 }
 
-.sidebar>ul>li {
+.sidebar>ul>div {
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.sidebar>ul>div>li {
     padding: 1em;
     border-bottom: 1px solid #000;
     display: flex;
@@ -11,10 +16,21 @@
     justify-content: space-between;
 }
 
-.sidebar>ul>li:hover {
+.sidebar>ul>div>li:hover {
     background: rgba(255, 255, 255, 0.4);
 }
 
-.sidebar>ul>li>img {
+.sidebar>ul>div>li>img {
     width: 10%;
+}
+
+.sidebar>ul>div>ul>li {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1em;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+
+.sidebar>ul>div>ul>li:hover {
+    background: rgba(255, 255, 255, 0.4);
 }
