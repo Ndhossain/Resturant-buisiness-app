@@ -2,9 +2,16 @@ import { useState } from "react";
 import classes from "../styles/Sidebar.module.css";
 import withCategories from "./HOC/withCategories";
 import useFetch from "./hooks/useFetch";
+import Mealitems from "./Mealitems";
+
 
 function Sidebar({ cateLoading, cateError, cateResult }) {
-  const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [mealValue , setMealValue] = useState({
+    areaValue : null,
+    categoryValue: 'All Category Items',
+    allValue: null,
+  })
+
   const { loading, error, result } = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
     "GET"
@@ -12,14 +19,38 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
   const area = result ? result?.meals : [];
   const category = cateResult ? cateResult?.categories : [];
 
+  const handleAllClick = (e) => {
+    setMealValue((prevValue) => (
+    {
+      areaValue: null,
+      categoryValue: null,
+      allValue: e.target.innerText,
+    }))
+  }
+
+  const handleAreaClick = (e) => {
+    setMealValue((prevValue) => ({
+      areaValue : e.target.innerText,
+      categoryValue: prevValue.categoryValue,
+      allValue: null,
+    }))
+  }
+
   const handleSideBarItemClick = (e) => {
-    if (e.target) {
-      e.target.parentElement.style.height === "57px"
-        ? (e.target.parentElement.style = "height : 100%")
-        (e.target.lastChild.innerText = "expand_less")
-        : (e.target.parentElement.style = "height : 57px")
-        (e.target.lastChild.innerText = "expand_more")
-    };
+    setMealValue((prevValue) => ({
+      areaValue : null,
+      categoryValue: e.target.innerText,
+      allValue: null,
+    }))
+
+
+      if (e.target.parentElement.parentElement.style.height === "57px") {
+        (e.target.parentElement.parentElement.style = "height : null");
+        (e.target.parentElement.lastChild.innerText = "expand_less");
+      } else {
+        (e.target.parentElement.parentElement.style = "height : 57px");
+        (e.target.parentElement.lastChild.innerText = "expand_more");
+      };
   };
 
   return (
@@ -27,36 +58,37 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
       {cateLoading && <div>Loading....</div>}
       {cateError && <div>An error occured!</div>}
       {!cateLoading && !cateError && category.length > 0 && (
-        <ul>
-          <div>
+        <ul className={classes.sidebarMenu}>
+          <div onClick={handleAllClick}>
             <li>
-              All Items
-              {/* <span class="material-icons-outlined">
-                        expand_less
-                    </span> */}
+              All Category Items
             </li>
           </div>
           {category.map((item) => (
             <div
               key={item.idCategory}
-              onClick={handleSideBarItemClick}
               style={{ height: "57px" }}
             >
-              <li>
+              <li >
                 <img src={item.strCategoryThumb} alt={item.strCategory} />
-                {item.strCategory}
+                <p onClick={handleSideBarItemClick}>{item.strCategory}</p>
                 <span className="material-icons-outlined">expand_more</span>
               </li>
-              <ul key={5555555}>
-                <li>All</li>
-                {area.map((item, index) => (
-                  <li key={index}>{item.strArea}</li>
-                ))}
-              </ul>
+              {loading && <div>Loading....</div>}
+              {error && <div>An error occured!</div>}
+              {!loading && !error && area.length > 0 && (
+                <ul>
+                  {area.map((item, index) => (
+                    <li onClick={handleAreaClick} key={index}>{item.strArea}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </ul>
       )}
+      
+      <Mealitems mealValue={mealValue} category={category} />
     </div>
   );
 }

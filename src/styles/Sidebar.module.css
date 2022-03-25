@@ -1,10 +1,15 @@
 .sidebar {
+    display: flex;
+    width: 100%;
+}
+
+.sidebarMenu {
     width: 24%;
 }
 
 .sidebar>ul>div {
     overflow: hidden;
-    transition: 0.3s ease-in-out;
+    transition: 0.10s ease-in-out;
 }
 
 .sidebar>ul>div>li {
@@ -14,6 +19,19 @@
     cursor: pointer;
     background: rgba(255, 255, 255, 0.2);
     justify-content: space-between;
+    position: relative;
+}
+
+.sidebar>ul>div>li>p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 5;
 }
 
 .sidebar>ul>div>li:hover {
