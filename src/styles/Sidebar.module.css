@@ -5,6 +5,7 @@
 
 .sidebarMenu {
     width: 24%;
+    position: sticky;
 }
 
 .sidebar>ul>div {

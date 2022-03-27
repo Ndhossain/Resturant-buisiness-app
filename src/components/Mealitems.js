@@ -1,28 +1,33 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "../styles/Mealitem.module.css";
 
 
 
 export default function Mealitems({mealValue, category}) {
-    const [response, setResponse] = useState(null)
-    const myArray = [];
-        const getItems = async (cate) => {
-            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cate}`
-            const response = await axios.get(url)
-            return response.data
-        }
+    const [response, setResponse] = useState(null);
     
-        console.log(myArray);
-        
-        category.forEach(categories => {
-            getItems(categories.strCategory).then((res) => {
-                    const newArray = myArray.push(...res.meals)
-                    // setResponse(newArray);
+    const myArray = [];
+    const getItems = async (cate) => {
+        const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cate}`
+        const response = await axios.get(url)
+        return response.data
+    }
 
-                    // console.log(newArray);
-            })
-        });
+    console.log(myArray);
+    
+    category.forEach(categories => {
+        getItems(categories.strCategory).then((res) => {
+            let newArray = myArray.concat(...res.meals)
+            // setResponse(newArray);
+        })
+    });
+    console.log(response);
+
+    // useEffect(() => {
+    //     setResponse(myArray)
+    // },[myArray]
+    // )
 
             
 
