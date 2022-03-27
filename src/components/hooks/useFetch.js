@@ -5,8 +5,6 @@ export default function useFetch(url, method) {
   const [error, setError] = useState(false);
   const [result, setResult] = useState(null);
 
-  console.log(url);
-
   useEffect(() => {
     async function requestFetch() {
       try {

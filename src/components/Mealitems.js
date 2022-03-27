@@ -1,70 +1,46 @@
-import classes from "../styles/Mealitem.module.css"
-import pizza from "../assets/pizza.jpg"
-import useFetch from "./hooks/useFetch"
+import axios from "axios";
+import { useState } from "react";
+import classes from "../styles/Mealitem.module.css";
 
 
 
 export default function Mealitems({mealValue, category}) {
-    const generateURL = () => {
-        return category.map((cate) => (`https://www.themealdb.com/api/json/v1/1/filter.php?c=${cate.strCategory}`))
-    }
-
+    const [response, setResponse] = useState(null)
+    const myArray = [];
+        const getItems = async (cate) => {
+            const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cate}`
+            const response = await axios.get(url)
+            return response.data
+        }
     
-    const allItems = useFetch(undefined, "GET");
+        console.log(myArray);
+        
+        category.forEach(categories => {
+            getItems(categories.strCategory).then((res) => {
+                    const newArray = myArray.push(...res.meals)
+                    // setResponse(newArray);
 
+                    // console.log(newArray);
+            })
+        });
 
-
-    console.log(allItems);
-
-    console.log(mealValue);
-
-
+            
 
     return (
         <div className={classes.itemsSection}>
             <div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
-            <div className={classes.products}>
-                <img src={pizza} alt="pizza" />
-                <span>Pizza</span>
-                <span>calories</span>
-                <span>Details</span>
-            </div>
+
+                {/* {myarray.length < 0 && myarray.map((items) => (
+                    items.map((item) => (
+                        <div className={classes.products} key={item.idMeal}>
+                            <img src={item.strMealThumb} alt={item.strMeal} />
+                            <span>Title: {item.strMeal}</span>
+                            <span>calories</span>
+                            <span>Details</span>
+                        </div>
+                    ))
+                ))} */}
+            
             </div>
         </div>
     )
