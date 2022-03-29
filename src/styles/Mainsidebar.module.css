@@ -1,0 +1,77 @@
+.sidebarMenu {
+    width: 25%;
+    height: 100vh;
+    overflow-y: scroll;
+    top: 0;
+    position: sticky;
+  }
+  
+  .sidebarMenu::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .sidebarMenu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  .sidebarMenu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+  }
+  
+  .sidebarMenu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .sidebarMenu > div {
+    overflow: hidden;
+    transition: 0.1s ease-in-out;
+  }
+  
+  .sidebarMenu > div > li {
+    padding: 1em;
+    border-bottom: 1px solid #000;
+    display: flex;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .sidebarMenu > div > li > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 5;
+  }
+  
+  .sidebarMenu > div > li:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .sidebarMenu > div > li > img {
+    width: 10%;
+  }
+  
+  .sidebarMenu > div > ul > li {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1em;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .sidebarMenu > div > ul > li:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  @media only screen and (max-width: 1040px) {
+      .sidebarMenu {
+          display: none;
+      }
+  }

@@ -39,7 +39,18 @@ export default function Mealitems({ mealValue, category }) {
 
   return (
     <div className={classes.itemsSection}>
-      <div>
+      <div className={classes.head}>
+      <h3>
+        {mealValue.categoryValue
+          ? mealValue.categoryValue
+          : mealValue.areaValue}
+      </h3>
+      <button className={classes.resItem}>
+        Categories
+      </button>
+      </div>
+      <br/>
+      <div className={classes.menuItems}>
         {loading && <div>Loading...</div>}
         {!loading &&
           allValueResult?.length >= 0 &&
@@ -47,7 +58,7 @@ export default function Mealitems({ mealValue, category }) {
             items.map((item) => (
               <div className={classes.products} key={item.idMeal}>
                 <img src={item.strMealThumb} alt={item.strMeal} />
-                <span>Title: {item.strMeal}</span>
+                <span>{item.strMeal}</span>
               </div>
             ))
           )}

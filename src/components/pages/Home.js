@@ -1,13 +1,13 @@
-import Header from "../Header"
-import CategoriesSlide from "../CategoriesSlide"
-import Allmeals from "../Allmeals"
+import CategoriesSlide from "../CategoriesSlide";
+import Header from "../Header";
+import Sidebar from "../Sidebar";
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-            <CategoriesSlide />
-            <Allmeals />
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <CategoriesSlide />
+      <Sidebar />
+    </>
+  );
 }
