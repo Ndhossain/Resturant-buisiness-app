@@ -35,7 +35,7 @@ export default function Mealitems({ mealValue, category }) {
 
   const allValueResult = response?.map((item) => item.data.meals);
 
-  console.log(allValueResult);
+  console.log(loading);
 
   return (
     <div className={classes.itemsSection}>
