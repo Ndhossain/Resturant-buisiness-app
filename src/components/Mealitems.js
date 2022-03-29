@@ -4,41 +4,53 @@ import classes from "../styles/Mealitem.module.css";
 
 export default function Mealitems({ mealValue, category }) {
   const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
-
+  console.log(mealValue.categoryValue);
 
   useEffect(() => {
-    const url = category.map(
-      (item) =>
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${item.strCategory}`
-    );
+    const url =
+      mealValue.areaValue === null &&
+      mealValue.categoryValue === "All Category Items"
+        ? category.map(
+            (item) =>
+              `https://www.themealdb.com/api/json/v1/1/filter.php?c=${item.strCategory}`
+          )
+        : mealValue.areaValue === null &&
+          mealValue.categoryValue !== "All Category Items" &&
+          mealValue.categoryValue !== null
+        ? [
+            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealValue.categoryValue}`,
+          ]
+        : [
+            `https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealValue.areaValue}`,
+          ];
 
-    axios.all(url.map((url) => axios.get(url))).then(
-      (data) => setResponse(data),
-    );
+    axios
+      .all(url.map((url) => axios.get(url)))
+      .then((data) => setResponse(data));
 
-    if(loading) return setLoading(!loading);
-    
-  }, [category, loading]);
+    if (loading) return setLoading(!loading);
+  }, [category, loading, mealValue.areaValue, mealValue.categoryValue]);
 
-  const result = response?.map((item) => item.data.meals)
+  const allValueResult = response?.map((item) => item.data.meals);
+
+  console.log(allValueResult);
 
   return (
     <div className={classes.itemsSection}>
       <div>
         {loading && <div>Loading...</div>}
-        {!loading && result?.length >= 0 &&
-          result.map((items) => (
+        {!loading &&
+          allValueResult?.length >= 0 &&
+          allValueResult.map((items) =>
             items.map((item) => (
               <div className={classes.products} key={item.idMeal}>
-              <img src={item.strMealThumb} alt={item.strMeal} />
-              <span>Title: {item.strMeal}</span>
-              <span>calories</span>
-              <span>Details</span>
-            </div>
+                <img src={item.strMealThumb} alt={item.strMeal} />
+                <span>Title: {item.strMeal}</span>
+              </div>
             ))
-          ))}
+          )}
       </div>
     </div>
   );
