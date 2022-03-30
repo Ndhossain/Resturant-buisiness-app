@@ -10,6 +10,7 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
     areaValue: null,
     categoryValue: "All Category Items",
   });
+  const [x, setX] = useState(100)
 
   const { loading, error, result } = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
@@ -47,6 +48,10 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
     }));
   };
 
+  const handleSidebarMenu = () => {
+    setX((prev) => prev === 100 ? 50 : 100)
+  }
+
   return (
     <div className={classes.fooditems}>
       <h1 style={{ textAlign: "center", padding: "1em 0" }}>Our Food Items</h1>
@@ -62,9 +67,10 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
             area={area}
             handleAreaClick={handleAreaClick}
             handleSideBarItemClick={handleSideBarItemClick}
+            x={x}
           />
 
-          <Mealitems mealValue={mealValue} category={category} />
+          <Mealitems mealValue={mealValue} category={category} handleSidebarMenu={handleSidebarMenu} />
         </div>
       </div>
     </div>

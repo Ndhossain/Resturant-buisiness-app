@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import classes from "../styles/Mealitem.module.css";
 
-export default function Mealitems({ mealValue, category }) {
+export default function Mealitems({ mealValue, category, handleSidebarMenu }) {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -45,7 +45,7 @@ export default function Mealitems({ mealValue, category }) {
           ? mealValue.categoryValue
           : mealValue.areaValue}
       </h3>
-      <button className={classes.resItem}>
+      <button onClick={handleSidebarMenu} className={classes.resItem}>
         Categories
       </button>
       </div>

@@ -10,13 +10,15 @@ export default function Mainsidebar({
   area,
   handleAreaClick,
   handleSideBarItemClick,
+  x
 }) {
+
   return (
     <>
       {cateLoading && <div>Loading....</div>}
       {cateError && <div>An error occured!</div>}
       {!cateLoading && !cateError && category.length > 0 && (
-        <ul className={classes.sidebarMenu}>
+        <ul className={classes.sidebarMenu}  style={{top: `${x}%`,}}>
           <div style={{ height: "57px" }}>
             <li>
               <p onClick={handleAllClick}>All Category Items</p>
