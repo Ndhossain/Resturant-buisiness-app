@@ -1,54 +1,9 @@
+.fooditems {
+  padding: 2em 0;
+}
+
 .sidebar {
-    display: flex;
-    width: 100%;
-}
-
-.sidebarMenu {
-    width: 24%;
-}
-
-.sidebar>ul>div {
-    overflow: hidden;
-    transition: 0.10s ease-in-out;
-}
-
-.sidebar>ul>div>li {
-    padding: 1em;
-    border-bottom: 1px solid #000;
-    display: flex;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
-    justify-content: space-between;
-    position: relative;
-}
-
-.sidebar>ul>div>li>p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: absolute;
-    height: 100%;
-    top: 0%;
-    left: 0%;
-    z-index: 5;
-}
-
-.sidebar>ul>div>li:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.sidebar>ul>div>li>img {
-    width: 10%;
-}
-
-.sidebar>ul>div>ul>li {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 1em;
-    border-bottom: 1px solid #000;
-    cursor: pointer;
-}
-
-.sidebar>ul>div>ul>li:hover {
-    background: rgba(255, 255, 255, 0.4);
+  display: flex;
+  width: 100%;
+  position: relative;
 }
