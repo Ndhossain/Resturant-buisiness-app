@@ -7,3 +7,14 @@
   width: 100%;
   position: relative;
 }
+
+.disBlur {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
