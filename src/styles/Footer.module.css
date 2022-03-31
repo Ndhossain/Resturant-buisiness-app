@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.firstFooterPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.socialIcon {
+    display: flex;
+}
