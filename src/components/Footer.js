@@ -9,8 +9,7 @@ export default function Footer() {
       <div className={classes.firstFooterPart}>
         <Logo />
         <p>
-          We offers high-quality foods and the best delivery service, and the
-          food market you can blindly trust
+          We offers high-quality foods and the best service, and you can blindly trust
         </p>
         <div className={classes.socialIcon}>
           <FaFacebook className={classes.icon1} />

@@ -17,7 +17,6 @@ export default function Mainsidebar({
 }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  console.log(screenWidth);
   useEffect(() => {
     const widthChanging = () => setScreenWidth(window.innerWidth);
 

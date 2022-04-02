@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import classes from "../styles/Menu.module.css";
 import buttonclasses from "../styles/SignupButton.module.css";
 import Button from "./Button";
+import Login from "./pages/Login";
 
 export default function Menu() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -24,6 +25,7 @@ export default function Menu() {
 
   return (
     <>
+    {/* <Login /> */}
       <div className={classes.hamBurger} onClick={handleMenuClick}>
         <h1 className="material-icons-outlined" style={{ fontSize: "40px" }}>
           {toggleMenu ? "close" : "menu"}

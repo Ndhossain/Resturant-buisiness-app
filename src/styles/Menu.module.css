@@ -13,7 +13,7 @@
 }
 
 .menu>li>a:hover {
-    border-bottom: 5px solid #fff;
+    border-bottom: 1px solid #fff;
     transition: 0.15s ease-in;
 }
 

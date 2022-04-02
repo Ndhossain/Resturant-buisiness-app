@@ -20,10 +20,16 @@
 
 .icon1 ,.icon2, .icon3, .icon4 {
     padding: 5px;
-    font-size: 24px;
+    font-size: 30px;
     height: calc(1em + 5px);
     width: calc(1em + 5px);
     cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .icon1:hover ,.icon2:hover, .icon3:hover, .icon4:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: .5s;
   }
   
   .icon1>path {
@@ -40,4 +46,11 @@
   
   .icon4>path {
       color: rgb(255, 51, 51);
+  }
+
+
+  @media only screen and (max-width: 1024px) {
+    .firstFooterPart {
+      flex-direction: column;
+    }
   }
