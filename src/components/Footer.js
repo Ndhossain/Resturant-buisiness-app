@@ -3,8 +3,6 @@ import classes from "../styles/Footer.module.css";
 import Logo from "./Logo";
 
 
-console.log(FaFacebook);
-
 export default function Footer() {
   return (
     <footer className={classes.footer}>
