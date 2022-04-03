@@ -25,3 +25,7 @@ li {
 p {
     line-height: 1.5em;
 }
+
+.error {
+    color: rgb(255, 0, 0);
+}

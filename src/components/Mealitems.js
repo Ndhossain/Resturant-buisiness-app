@@ -6,7 +6,6 @@ export default function Mealitems({ mealValue, category, handleSidebarMenu }) {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(mealValue.categoryValue);
 
   useEffect(() => {
     const url =
@@ -35,7 +34,6 @@ export default function Mealitems({ mealValue, category, handleSidebarMenu }) {
 
   const allValueResult = response?.map((item) => item.data.meals);
 
-  console.log(loading);
 
   return (
     <div className={classes.itemsSection}>

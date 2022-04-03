@@ -1,16 +1,22 @@
-import "../styles/App.css"
+import { AuthProvider } from "../contexts/AuthContext";
+import "../styles/App.css";
 import Layout from "./Layout";
 import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Signup from "./pages/Signup";
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 
 function App() {
   return (
-    <Layout>
-      <Home/>
-      {/* <Login/> */}
-      {/* <Signup/> */}
-    </Layout>
+    <BrowserRouter>
+    <AuthProvider>
+      <Layout>
+        <Routes>
+
+          <Route path="/" element={<Home />}/>
+        
+        </Routes>
+      </Layout>
+    </AuthProvider>
+    </BrowserRouter>
   );
 }
 

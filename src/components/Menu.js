@@ -46,6 +46,7 @@ export default function Menu() {
     <>
     <Login activity={activeLogin} events={handleLoginPage} signupEvent={handleSignupPage} />
     <Signup activity={activeSignup} events={handleSignupPage} loginEvent={handleLoginPage} />
+    <div className={classes.blackout} style={{display: `${toggleMenu ? 'block' : 'none'}`}}></div>
       <div className={classes.hamBurger} onClick={handleMenuClick}>
         <h1 className="material-icons-outlined" style={{ fontSize: "40px" }}>
           {toggleMenu ? "close" : "menu"}
