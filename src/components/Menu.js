@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import classes from "../styles/Menu.module.css";
-import buttonclasses from "../styles/SignupButton.module.css";
-import Button from "./Button";
+// import buttonclasses from "../styles/SignupButton.module.css";
+// import Button from "./Button";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { useAuth } from "../contexts/AuthContext";
 
 
 export default function Menu() {
@@ -11,6 +12,8 @@ export default function Menu() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [activeLogin, setActiveLogin] = useState(false);
   const [activeSignup, setActiveSignup] = useState(false);
+  const { currentUser, logout } = useAuth();
+  console.log(currentUser.displayName)
   
 
   useEffect(() => {
@@ -69,9 +72,19 @@ export default function Menu() {
           <li>
             <a href="/About.html">CONTACTS</a>
           </li>
-          <li>
-            <Button classes={buttonclasses} type="LOG IN" events={handleLoginPage} />
-            <Button classes={buttonclasses} type="SIGN UP" events={handleSignupPage} />
+          <li className={classes.profile}>
+          <span class="material-icons-outlined">
+            account_circle
+          </span>
+          <p>{currentUser.displayName}</p>
+          <span 
+            style={{cursor: `pointer`}} className="material-icons-outlined"
+            onClick={logout}
+          >
+            logout
+          </span>
+            {/* <Button classes={buttonclasses} type="LOG IN" events={handleLoginPage} />
+            <Button classes={buttonclasses} type="SIGN UP" events={handleSignupPage} /> */}
           </li>
         </ul>
       )}

@@ -27,6 +27,11 @@
     transition: 0.15s ease-in;
 }
 
+.profile {
+    display: flex;
+    gap: .5em;
+}
+
 @media only screen and (max-width: 1010px) {
     .menu {
         flex-direction: column;
