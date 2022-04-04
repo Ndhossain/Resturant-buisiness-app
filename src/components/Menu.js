@@ -73,18 +73,22 @@ export default function Menu() {
             <a href="/About.html">CONTACTS</a>
           </li>
           <li className={classes.profile}>
-          <span class="material-icons-outlined">
-            account_circle
-          </span>
-          <p>{currentUser.displayName}</p>
-          <span 
-            style={{cursor: `pointer`}} className="material-icons-outlined"
-            onClick={logout}
-          >
-            logout
-          </span>
+            <>
+              <span className="material-icons-outlined">
+                account_circle
+              </span>
+              <p>{currentUser.displayName}</p>
+              <span 
+                style={{cursor: `pointer`}} className="material-icons-outlined"
+                onClick={logout}
+              >
+                logout
+              </span>
+            </>
+            <>
             {/* <Button classes={buttonclasses} type="LOG IN" events={handleLoginPage} />
             <Button classes={buttonclasses} type="SIGN UP" events={handleSignupPage} /> */}
+            </>
           </li>
         </ul>
       )}
