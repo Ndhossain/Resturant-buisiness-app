@@ -1,6 +1,6 @@
 import { useState } from "react";
-import classes from "../../styles/Login.module.css";
 import { useAuth } from "../../contexts/AuthContext";
+import classes from "../../styles/Login.module.css";
 
 export default function Login({ activity, events, signupEvent }) {
   const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ export default function Login({ activity, events, signupEvent }) {
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
-  const {login} = useAuth()
+  const { login } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -16,12 +16,12 @@ export default function Login({ activity, events, signupEvent }) {
     try {
       setError("");
       setLoading(true);
-      login(email, password);
-      events()
+      await login(email, password);
+      events();
     } catch (err) {
-      console.log(error);
+      console.log(err);
       setLoading(false);
-      setError("Failed to login!");
+      setError("Email Password don't match");
     }
   }
 
@@ -31,7 +31,12 @@ export default function Login({ activity, events, signupEvent }) {
       style={{ display: `${activity ? "block" : "none"}` }}
     >
       <h1
-        onClick={events}
+        onClick={() => {
+          setEmail('');
+          setPassword('');
+          setError('')
+          events();
+        }}
         style={{ cursor: `pointer`, padding: `.5em`, float: `right` }}
         className="material-icons-outlined"
       >
