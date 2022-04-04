@@ -1,5 +1,5 @@
-export default function Button({classes, type}) {
+export default function Button({classes, type, events}) {
     return (
-        <button className={classes.navButton}>{type}</button>
+        <button onClick={events} className={classes.navButton}>{type}</button>
     )
 }

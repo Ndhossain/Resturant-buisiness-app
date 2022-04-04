@@ -2,5 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 1010px) {
+  .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
 }

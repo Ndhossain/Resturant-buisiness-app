@@ -50,14 +50,17 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
   };
 
   const handleSidebarMenu = () => {
-    setX((prev) => prev === 100 ? 50 : null)
+    setX((prev) => {if(prev === 100) return 50;} )
+
     setDisStyle((prev) => prev === 'none' ? 'block' : null)
+    
   }
 
   const handleCloseClick = () => {
     setX(prev => prev === 50 ? 100 : null)
     
     setDisStyle((prev) => prev === 'block' ? 'none' : null)
+
   }
 
   return (
