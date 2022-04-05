@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import classes from "../styles/Mainsidebar.module.css";
 
 export default function Mainsidebar({
@@ -14,18 +13,9 @@ export default function Mainsidebar({
   x,
   handleCloseClick,
   disStyle,
+  screenWidth,
 }) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const widthChanging = () => setScreenWidth(window.innerWidth);
-
-    window.addEventListener("resize", widthChanging);
-
-    return () => {
-      window.removeEventListener("resize", widthChanging);
-    };
-  }, []);
   return (
     <>
       {cateLoading && <div>Loading....</div>}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import classes from "../styles/Sidebar.module.css";
 import withCategories from "./HOC/withCategories";
 import useFetch from "./hooks/useFetch";
@@ -12,6 +12,17 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
   });
   const [x, setX] = useState(100)
   const [disStyle, setDisStyle] = useState('none')
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const widthChanging = () => setScreenWidth(window.innerWidth);
+
+    window.addEventListener("resize", widthChanging);
+
+    return () => {
+      window.removeEventListener("resize", widthChanging);
+    };
+  }, []);
 
   const { loading, error, result } = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
@@ -65,7 +76,7 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
 
   return (
     <>
-    <div style={{ display: `${disStyle}` }}  className={classes.disBlur}></div>
+    <div style={{ display: `${screenWidth <= 1040 ? disStyle : `none`}` }}  className={classes.disBlur}></div>
     <div className={classes.fooditems}>
       <h1 style={{ textAlign: "center", padding: "1em 0" }}>Our Food Items</h1>
       <div className={classes.allmeals}>
@@ -83,6 +94,7 @@ function Sidebar({ cateLoading, cateError, cateResult }) {
             handleCloseClick={handleCloseClick}
             x={x}
             disStyle={disStyle}
+            screenWidth={screenWidth}
           />
 
           <Mealitems mealValue={mealValue} category={category} handleSidebarMenu={handleSidebarMenu} />

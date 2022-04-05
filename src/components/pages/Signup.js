@@ -8,7 +8,7 @@ export default function Signup({ activity, events, loginEvent }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [agree, setAgree] = useState("");
+  const [agree, setAgree] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
@@ -22,10 +22,10 @@ export default function Signup({ activity, events, loginEvent }) {
     try {
       setError("");
       setLoading(true);
-      signup(email, password, `${firstName} ${lastName}`);
-      events()
+      await signup(email, password, `${firstName} ${lastName}`);
+      events();
     } catch (err) {
-      console.log(error);
+      console.log(err.message);
       setLoading(false);
       setError("Failed to Create an account");
     }
@@ -37,7 +37,16 @@ export default function Signup({ activity, events, loginEvent }) {
       className={classes.signup}
     >
       <h1
-        onClick={events}
+        onClick={() => {
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          setAgree();
+          setError("");
+          events();
+        }}
         style={{ cursor: `pointer`, padding: `.5em`, float: `right` }}
         className="material-icons-outlined"
       >
