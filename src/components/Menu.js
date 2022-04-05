@@ -5,6 +5,7 @@ import buttonclasses from "../styles/SignupButton.module.css";
 import Button from "./Button";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { Link } from "react-router-dom"
 
 export default function Menu() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -68,15 +69,15 @@ export default function Menu() {
       {(toggleMenu || screenWidth > 1010) && (
         <ul className={classes.menu}>
           <li>
-            <a href="/About.html">
+            <Link to="/reservation">
               <Button
                 classes={buttonclasses}
                 type="RESERVATION"
               />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/">HOME</a>
+            <Link to="/">HOME</Link>
           </li>
           <li>
             <a href="/About.html">ABOUT US</a>
