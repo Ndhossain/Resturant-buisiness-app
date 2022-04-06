@@ -1,0 +1,14 @@
+.contact > img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  position: relative;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  position: absolute;
+  top: 0;
+}

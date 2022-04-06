@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import classes from "../styles/Menu.module.css";
 import buttonclasses from "../styles/SignupButton.module.css";
 import Button from "./Button";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { Link } from "react-router-dom"
 
 export default function Menu() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -54,12 +54,6 @@ export default function Menu() {
         events={handleSignupPage}
         loginEvent={handleLoginPage}
       />
-      <div
-        className={classes.blackout}
-        style={{
-          display: `${toggleMenu && screenWidth < 1010 ? "block" : "none"}`,
-        }}
-      ></div>
 
       <div className={classes.hamBurger} onClick={handleMenuClick}>
         <h1 className="material-icons-outlined" style={{ fontSize: "40px" }}>
@@ -70,21 +64,20 @@ export default function Menu() {
         <ul className={classes.menu}>
           <li>
             <Link to="/reservation">
-              <Button
-                classes={buttonclasses}
-                type="RESERVATION"
-              />
+              <Button classes={buttonclasses} type="RESERVATION" />
             </Link>
           </li>
           <li>
             <Link to="/">HOME</Link>
           </li>
           <li>
-            <a href="/About.html">ABOUT US</a>
+            <Link to="/about">ABOUT US</Link>
           </li>
-          
           <li>
-            <a href="/About.html">CONTACTS</a>
+            <Link to="/gallery">GALLERY</Link>
+          </li>
+          <li>
+            <Link to="/contacts">CONTACTS</Link>
           </li>
           <li className={classes.profile}>
             {currentUser ? (

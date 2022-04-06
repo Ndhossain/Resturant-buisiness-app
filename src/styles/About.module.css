@@ -1,0 +1,40 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+}
+
+.header > img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
+  height: 100%;
+}
+
+.workers {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1em;
+}
+
+@media only screen and (max-height: 620px) {
+  .header > img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .header > img {
+    display: none;
+  }
+}
