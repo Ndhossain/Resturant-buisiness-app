@@ -1,12 +1,39 @@
+import { getDatabase, ref, set } from "firebase/database";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import classes from "../../styles/Contact.module.css";
 import useAbout from "../hooks/useAbout";
+import MessageForm from "../MessageForm";
 
 export default function Contacts() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const { loading, error, stuffResult } = useAbout(`contacts`);
+  const { currentUser } = useAuth();
+  console.log(currentUser);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const id = currentUser ? currentUser.uid : null;
+
+    const db = getDatabase();
+    const messageRef = ref(
+      db,
+      `information/message/${id ? id : email.replace(".", "to")}`
+    );
+
+    await set(messageRef, {
+      email: email,
+      name: name,
+      message: message,
+    });
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   return (
     <div className={classes.contact}>
@@ -31,32 +58,15 @@ export default function Contacts() {
       </div>
       <div className={classes.connectUs}>
         <h1 style={{ padding: `.6em` }}>Connect With Us</h1>
-        <form>
-          <input
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            type="text"
-            placeholder="Full Name"
-            required
-          />
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="text"
-            placeholder="Enter Email"
-            required
-          />
-          <textarea
-            onChange={(e) => setMessage(e.target.value)}
-            value={message}
-            placeholder="Type Your Message"
-            name="w3review"
-            rows="4"
-            cols="50"
-            required
-          />
-          <input className={classes.subButton} type="submit" />
-        </form>
+        <MessageForm
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          message={message}
+          setMessage={setMessage}
+          handleSubmit={handleSubmit}
+        />
       </div>
     </div>
   );
