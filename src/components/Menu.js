@@ -63,21 +63,29 @@ export default function Menu() {
       {(toggleMenu || screenWidth > 1010) && (
         <ul className={classes.menu}>
           <li>
-            <Link to="/reservation">
+            <Link onClick={handleMenuClick} to="/reservation">
               <Button classes={buttonclasses} type="RESERVATION" />
             </Link>
           </li>
           <li>
-            <Link to="/">HOME</Link>
+            <Link onClick={handleMenuClick} to="/">
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to="/about">ABOUT US</Link>
+            <Link onClick={handleMenuClick} to="/about">
+              ABOUT US
+            </Link>
           </li>
           <li>
-            <Link to="/gallery">GALLERY</Link>
+            <Link onClick={handleMenuClick} to="/gallery">
+              GALLERY
+            </Link>
           </li>
           <li>
-            <Link to="/contacts">CONTACTS</Link>
+            <Link onClick={handleMenuClick} to="/contacts">
+              CONTACTS
+            </Link>
           </li>
           <li className={classes.profile}>
             {currentUser ? (
@@ -87,7 +95,10 @@ export default function Menu() {
                 <span
                   style={{ cursor: `pointer` }}
                   className="material-icons-outlined"
-                  onClick={logout}
+                  onClick={() => {
+                    logout();
+                    handleMenuClick();
+                  }}
                 >
                   logout
                 </span>

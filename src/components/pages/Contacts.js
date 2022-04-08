@@ -11,7 +11,7 @@ export default function Contacts() {
   const [message, setMessage] = useState("");
   const { loading, error, stuffResult } = useAbout(`contacts`);
   const { currentUser } = useAuth();
-  console.log(currentUser);
+  console.log(stuffResult);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
