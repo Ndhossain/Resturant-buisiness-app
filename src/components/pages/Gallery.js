@@ -7,7 +7,6 @@ import eventClasses from "../../styles/EventImg.module.css"
 export default function Gallery() {
   const { loading, error, galleryResult } = useGallery();
 
-  console.log(galleryResult)
 
   return (
     <div>

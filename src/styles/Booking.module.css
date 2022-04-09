@@ -1,0 +1,18 @@
+.booking {
+    background-color: rgba(255, 255, 255, .08);
+    padding: 10px;
+    display: flex;
+}
+
+.reservationDetails {
+    width: 75%;
+}
+
+.reservationDetails>h3 {
+    font-weight: 500;
+    font-size: 20px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+    display: inline;
+}
+
