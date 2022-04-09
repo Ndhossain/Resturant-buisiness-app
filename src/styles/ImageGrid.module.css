@@ -1,0 +1,9 @@
+.imageGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 3em 0;
+}
+
+.imageGrid>img {
+    width: 100%;
+}
