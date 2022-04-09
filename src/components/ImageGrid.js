@@ -1,12 +1,10 @@
-import classes from "../styles/ImageGrid.module.css"
-
-export default function ImageGrid({ images = [] }) {
+export default function ImageGrid({ images = [], classes }) {
   return (
     <div className={classes.imageGrid}>
     {images?.map((image, index) => (
-      // <div key={index} className={classes.images}>
-      // </div>
-      <img src={image.url} alt="Gallery Images" />
+      <div className={classes.images}>
+        <img key={image} src={image.url} alt="Gallery Images" />
+      </div>
     ))}
   </div>
   );
