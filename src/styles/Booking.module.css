@@ -16,3 +16,7 @@
     display: inline;
 }
 
+
+.reservationDetails>p {
+    margin-top: 20px;
+}
