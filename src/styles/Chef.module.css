@@ -1,0 +1,46 @@
+.chefSec {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  align-items: center;
+  padding: 2em 0;
+}
+
+.chefs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.chefDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1em;
+}
+
+.chefDetails:hover {
+  transition: 0.3ms;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.chefDetails > img {
+  width: 80%;
+  height: 80%;
+}
+
+@media only screen and (max-width: 980px) {
+  .chefs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .chefs {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,22 @@
+.imageGrid {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.images {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  overflow: hidden;
+}
+
+.images>img {
+    width: 100%;
+    transition: transform .5s ease;
+}
+
+.images>img:hover {
+    transform: scale(1.1);
+}

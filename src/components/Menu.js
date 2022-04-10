@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import classes from "../styles/Menu.module.css";
 import buttonclasses from "../styles/SignupButton.module.css";
@@ -53,12 +54,6 @@ export default function Menu() {
         events={handleSignupPage}
         loginEvent={handleLoginPage}
       />
-      <div
-        className={classes.blackout}
-        style={{
-          display: `${toggleMenu && screenWidth < 1010 ? "block" : "none"}`,
-        }}
-      ></div>
 
       <div className={classes.hamBurger} onClick={handleMenuClick}>
         <h1 className="material-icons-outlined" style={{ fontSize: "40px" }}>
@@ -68,22 +63,29 @@ export default function Menu() {
       {(toggleMenu || screenWidth > 1010) && (
         <ul className={classes.menu}>
           <li>
-            <a href="/About.html">
-              <Button
-                classes={buttonclasses}
-                type="RESERVATION"
-              />
-            </a>
+            <Link onClick={handleMenuClick} to="/reservation">
+              <Button classes={buttonclasses} type="RESERVATION" />
+            </Link>
           </li>
           <li>
-            <a href="/">HOME</a>
+            <Link onClick={handleMenuClick} to="/">
+              HOME
+            </Link>
           </li>
           <li>
-            <a href="/About.html">ABOUT US</a>
+            <Link onClick={handleMenuClick} to="/about">
+              ABOUT US
+            </Link>
           </li>
-          
           <li>
-            <a href="/About.html">CONTACTS</a>
+            <Link onClick={handleMenuClick} to="/gallery">
+              GALLERY
+            </Link>
+          </li>
+          <li>
+            <Link onClick={handleMenuClick} to="/contacts">
+              CONTACTS
+            </Link>
           </li>
           <li className={classes.profile}>
             {currentUser ? (
@@ -93,7 +95,10 @@ export default function Menu() {
                 <span
                   style={{ cursor: `pointer` }}
                   className="material-icons-outlined"
-                  onClick={logout}
+                  onClick={() => {
+                    logout();
+                    handleMenuClick();
+                  }}
                 >
                   logout
                 </span>

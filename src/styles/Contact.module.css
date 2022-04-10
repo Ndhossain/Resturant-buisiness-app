@@ -1,0 +1,33 @@
+.contact {
+  position: relative;
+  height: 920px;
+}
+
+.contact > img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  height: 920px;
+}
+
+.contactInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  text-align: center;
+}
+
+.connectUs {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  align-items: center;
+}
+
