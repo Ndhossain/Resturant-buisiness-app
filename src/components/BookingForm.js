@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Calendar from "react-calendar/dist/umd/Calendar";
 import classes from "../styles/BookingForm.module.css";
 import "../styles/ReactCalender.css";
@@ -9,7 +10,13 @@ export default function BookingForm({
   setPartySize,
   date,
   setDate,
+  mainDate,
+  setMainDate,
 }) {
+  useEffect(() => {
+    setMainDate(`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
+  }, [date, setMainDate]);
+
   return (
     <form className={classes.bookingForm}>
       <div className={classes.location}>
@@ -62,14 +69,14 @@ export default function BookingForm({
           </div>
         </div>
       </div>
-        <div className={classes.date} style={{ cursor: `pointer` }}>
-          <label>Date</label>
-          <div className={classes.dateInput}>
-            <input type="date" disabled />
-            <span className="material-icons-outlined">keyboard_arrow_down</span>
-          </div>
-          <Calendar onChange={setDate} value={date} />
+      <div className={classes.date} style={{ cursor: `pointer` }}>
+        <label>Date</label>
+        <div className={classes.dateInput}>
+          <input type="text" disabled value={mainDate} />
+          <span className="material-icons-outlined">keyboard_arrow_down</span>
         </div>
+        <Calendar onChange={setDate} value={date} />
+      </div>
     </form>
   );
 }
