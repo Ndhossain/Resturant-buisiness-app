@@ -1,10 +1,14 @@
+import Calendar from "react-calendar/dist/umd/Calendar";
 import classes from "../styles/BookingForm.module.css";
+import "../styles/ReactCalender.css";
 
 export default function BookingForm({
   location,
   setLocation,
   partySize,
   setPartySize,
+  date,
+  setDate,
 }) {
   return (
     <form className={classes.bookingForm}>
@@ -58,16 +62,14 @@ export default function BookingForm({
           </div>
         </div>
       </div>
-      <div className={classes.dateTime}>
-        <div className={classes.date} style={{cursor: `pointer`}}>
+        <div className={classes.date} style={{ cursor: `pointer` }}>
           <label>Date</label>
           <div className={classes.dateInput}>
             <input type="date" disabled />
-            <span class="material-icons-outlined">keyboard_arrow_down</span>
+            <span className="material-icons-outlined">keyboard_arrow_down</span>
           </div>
+          <Calendar onChange={setDate} value={date} />
         </div>
-        <div className={classes.time}>hello world</div>
-      </div>
     </form>
   );
 }

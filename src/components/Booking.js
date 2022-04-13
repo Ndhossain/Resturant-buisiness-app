@@ -6,8 +6,9 @@ export default function Booking({ reservationType }) {
   const [more, setMore] = useState(true);
   const [location, setLocation] = useState("Indoor");
   const [partySize, setPartySize] = useState(1);
+  const [date, setDate] = useState(new Date());
 
-  console.log(location);
+  console.log(date);
 
   const handleClick = () => {
     setMore(!more);
@@ -76,6 +77,8 @@ export default function Booking({ reservationType }) {
         setLocation={setLocation}
         partySize={partySize}
         setPartySize={setPartySize}
+        date={date}
+        setDate={setDate}
       />
     </div>
   );

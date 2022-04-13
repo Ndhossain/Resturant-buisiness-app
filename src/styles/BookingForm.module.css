@@ -41,14 +41,6 @@ label {
   justify-content: space-between;
 }
 
-.dateTime {
-  display: flex;
-}
-
-.date {
-    width: 60%;
-}
-
 .date > div > input {
   background: transparent;
   outline: none;
