@@ -2,14 +2,12 @@ import { useState } from "react";
 import classes from "../styles/Booking.module.css";
 import BookingForm from "./BookingForm";
 
+
 export default function Booking({ reservationType }) {
   const [more, setMore] = useState(true);
   const [location, setLocation] = useState("Indoor");
   const [partySize, setPartySize] = useState(1);
   const [date, setDate] = useState(new Date());
-  const [mainDate, setMainDate] = useState(`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`)
-
-  console.log(mainDate)
 
   const handleClick = () => {
     setMore(!more);
@@ -80,8 +78,6 @@ export default function Booking({ reservationType }) {
         setPartySize={setPartySize}
         date={date}
         setDate={setDate}
-        mainDate={mainDate}
-        setMainDate={setMainDate}
       />
     </div>
   );
