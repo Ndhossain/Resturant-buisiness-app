@@ -2,7 +2,6 @@ import { useState } from "react";
 import classes from "../styles/Booking.module.css";
 import BookingForm from "./BookingForm";
 
-
 export default function Booking({ reservationType }) {
   const [more, setMore] = useState(true);
   const [location, setLocation] = useState("Indoor");

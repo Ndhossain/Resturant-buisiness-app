@@ -74,14 +74,30 @@ export default function BookingForm({
           <input
             type="text"
             disabled
-            value={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+            value={`${date.getDate()}-${
+              date.getMonth() + 1
+            }-${date.getFullYear()}`}
           />
           <span className="material-icons-outlined">keyboard_arrow_down</span>
         </div>
         <div className={classes.reactCalc} style={{ display: x }}>
-          <Calendar onChange={setDate} value={date}  />
+          <Calendar
+            onChange={setDate}
+            value={date}
+            tileDisabled={({ date }) =>
+              date.getDay() === 0 ||
+              date.getDay() === 6 ||
+              (date.getMonth() === new Date().getMonth() &&
+                date.getDate() < new Date().getDate()) ||
+              date.getMonth() < new Date().getMonth() ||
+              date.getMonth() > new Date().getMonth() + 1 ||
+              date.getFullYear() < new Date().getFullYear() ||
+              date.getFullYear() > new Date().getFullYear()
+            }
+          />
         </div>
       </div>
+      <div className={classes.time}></div>
     </form>
   );
 }
