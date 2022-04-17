@@ -2,6 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar/dist/umd/Calendar";
 import classes from "../styles/BookingForm.module.css";
 import "../styles/ReactCalender.css";
+import TimePicker from "./TimePicker";
 
 export default function BookingForm({
   location,
@@ -10,8 +11,12 @@ export default function BookingForm({
   setPartySize,
   date,
   setDate,
+  time,
+  setTime,
+  reservationType,
 }) {
   const [x, setX] = useState(`none`);
+
 
   return (
     <form className={classes.bookingForm}>
@@ -97,7 +102,14 @@ export default function BookingForm({
           />
         </div>
       </div>
-      <div className={classes.time}></div>
+      <div className={classes.time}>
+        <label>Time</label>
+        <TimePicker
+          time={time}
+          setTime={setTime}
+          reservationType={reservationType}
+        />
+      </div>
     </form>
   );
 }
