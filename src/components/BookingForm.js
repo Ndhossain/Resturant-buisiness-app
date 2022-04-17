@@ -11,7 +11,7 @@ export default function BookingForm({
   date,
   setDate,
 }) {
-  const [x, setX] = useState(`none`)
+  const [x, setX] = useState(`none`);
 
   return (
     <form className={classes.bookingForm}>
@@ -65,14 +65,21 @@ export default function BookingForm({
           </div>
         </div>
       </div>
-      <div className={classes.date} style={{cursor: `pointer`}}>
+      <div className={classes.date} style={{ cursor: `pointer` }}>
         <label>Date</label>
-        <div className={classes.dateInput} onClick={() => setX((prev) => prev === `none` ? `block` : `none`)}>
-          <input type="text" disabled value={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`} />
+        <div
+          className={classes.dateInput}
+          onClick={() => setX((prev) => (prev === `none` ? `block` : `none`))}
+        >
+          <input
+            type="text"
+            disabled
+            value={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+          />
           <span className="material-icons-outlined">keyboard_arrow_down</span>
         </div>
-        <div style={{display: x}}>
-        <Calendar onChange={setDate} value={date} />
+        <div className={classes.reactCalc} style={{ display: x }}>
+          <Calendar onChange={setDate} value={date}  />
         </div>
       </div>
     </form>

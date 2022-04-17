@@ -51,3 +51,7 @@ label {
   border: none;
   font-size: 0.9em;
 }
+
+.reactCalc {
+  transition: 0.5s;
+}
