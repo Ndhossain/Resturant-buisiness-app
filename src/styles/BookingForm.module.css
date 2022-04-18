@@ -1,0 +1,64 @@
+.bookingForm {
+  width: 25%;
+}
+
+label {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.location,
+.partySize,
+.date, .time {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fff;
+  gap: 0.2em;
+  padding: 0.3em;
+  margin: 0.4em;
+}
+
+.location > select {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 0.9em;
+}
+
+.location > select > option {
+  color: #000;
+}
+
+.partySize > div > input {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 0.9em;
+}
+
+.prtySizeInput, .dateInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  transition: all 0.3s ease 0.3s;
+}
+
+.date > div > input {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 0.9em;
+}
+
+.reactCalc {
+  transition: 0.5s;
+}
+
+
+@media only screen and (max-width: 1010px) {
+  .bookingForm {
+    width: 100%;
+  }
+}

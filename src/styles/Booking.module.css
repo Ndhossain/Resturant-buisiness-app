@@ -19,5 +19,15 @@
 
 
 .iconWith {
-    margin-top: 1em;
+    margin-top: .8em;
 }
+
+@media only screen and (max-width: 1010px) {
+    .booking {
+      flex-direction: column;
+    }
+
+    .reservationDetails {
+        width: 100%;
+    }
+  }

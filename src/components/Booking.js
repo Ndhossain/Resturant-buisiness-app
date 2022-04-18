@@ -1,8 +1,13 @@
 import { useState } from "react";
 import classes from "../styles/Booking.module.css";
+import BookingForm from "./BookingForm";
 
 export default function Booking({ reservationType }) {
   const [more, setMore] = useState(true);
+  const [location, setLocation] = useState("Indoor");
+  const [partySize, setPartySize] = useState(1);
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(``);
 
   const handleClick = () => {
     setMore(!more);
@@ -37,12 +42,46 @@ export default function Booking({ reservationType }) {
           </span>
         )}
         <div className={classes.iconWith}>
-          <span className="material-icons-outlined" style={{fontSize: `1em`, marginRight: `.5em`}}>
+          <span
+            className="material-icons-outlined"
+            style={{ fontSize: `1em`, marginRight: `.5em`, fontWeight: `100` }}
+          >
             restaurant
           </span>
-          <span>Hello World</span>
+          <span>
+            Reservation for parties of 1 to {location === `Indoor` ? 10 : 4}
+          </span>
+        </div>
+        <div className={classes.iconWith}>
+          <span
+            className="material-icons-outlined"
+            style={{ fontSize: `1em`, marginRight: `.5em`, fontWeight: `100` }}
+          >
+            payments
+          </span>
+          <span>$20 deposit per person</span>
+        </div>
+        <div className={classes.iconWith}>
+          <span
+            className="material-icons-outlined"
+            style={{ fontSize: `1em`, marginRight: `.5em`, fontWeight: `100` }}
+          >
+            receipt
+          </span>
+          <span>$2 Processing Fee</span>
         </div>
       </div>
+      <BookingForm
+        location={location}
+        setLocation={setLocation}
+        partySize={partySize}
+        setPartySize={setPartySize}
+        date={date}
+        setDate={setDate}
+        time={time}
+        setTime={setTime}
+        reservationType={reservationType}
+      />
     </div>
   );
 }
