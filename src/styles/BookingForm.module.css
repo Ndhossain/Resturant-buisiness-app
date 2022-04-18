@@ -10,7 +10,7 @@ label {
 .location,
 .partySize,
 .date,
-.time {
+.time, .resName {
   display: flex;
   flex-direction: column;
   border: 1px solid #fff;
@@ -54,8 +54,29 @@ label {
   font-size: 0.9em;
 }
 
+.resName>input {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 0.9em;
+}
+
 .reactCalc {
   transition: 0.5s;
+}
+
+.subButton {
+  padding: 0.5em;
+  margin: 0.6em;
+  background: transparent;
+  outline: none;
+  border: 1px solid #fff;
+  cursor: pointer;
+  width: 100%;
+}
+
+.subButton:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @media only screen and (max-width: 1010px) {

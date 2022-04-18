@@ -2,50 +2,68 @@
 } */
 
 .reservationHeader {
-    top: 0;
-    left: 0;
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 400px;
-    background-image: url(../assets/reservationHeader.jpg);
-    background-size: 100% 100%;
-    opacity: .5;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  background-image: url(../assets/reservationHeader.jpg);
+  background-size: 100% 100%;
+  opacity: 0.5;
 }
 
 .breadCrumb {
-    position: absolute;
-    font-size: 40px;
-    top: 180px;
-    text-align: center;
-    width: 100%;
-    left: 0;
-    font-weight: 600;
+  position: absolute;
+  font-size: 40px;
+  top: 180px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  font-weight: 600;
 }
 
 .gape {
-    height: 320px;
+  height: 320px;
 }
 
 .mainReservation {
-    width: 100%;
+  width: 100%;
 }
 
 .reservationMenu {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-.reservationMenu>li {
-    padding: 10px;
+.reservationMenu > li {
+  padding: 10px;
 }
 
-.reservationMenu>li:hover {
-    background: rgba(255, 255, 255, 0.08);
-    cursor: pointer;
+.reservationMenu > li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
 }
 
 .active {
-    background-color: rgba(255, 255, 255, .08);  
-    backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(5px);
+}
+
+.resHamMenu {
+  display: none;
+}
+
+@media only screen and (max-width: 610px) {
+  .resHamMenu {
+    display: block;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .reservationMenu {
+    position: absolute;
+    flex-direction: column;
+    gap: 10px;
+    background-color: black;
+  }
 }

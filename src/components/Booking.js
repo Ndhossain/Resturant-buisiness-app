@@ -8,6 +8,8 @@ export default function Booking({ reservationType }) {
   const [partySize, setPartySize] = useState(1);
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(``);
+  const [reserverName, setReserverName] = useState(``);
+  const [reserverEmail, setReserverEmail] = useState(``);
 
   const handleClick = () => {
     setMore(!more);
@@ -42,15 +44,23 @@ export default function Booking({ reservationType }) {
           </span>
         )}
         <div className={classes.iconWith}>
-          <span
-            className="material-icons-outlined"
-            style={{ fontSize: `1em`, marginRight: `.5em`, fontWeight: `100` }}
-          >
-            restaurant
-          </span>
-          <span>
-            Reservation for parties of 1 to {location === `Indoor` ? 10 : 4}
-          </span>
+          {reservationType !== "Event Reservation" && (
+            <>
+              <span
+                className="material-icons-outlined"
+                style={{
+                  fontSize: `1em`,
+                  marginRight: `.5em`,
+                  fontWeight: `100`,
+                }}
+              >
+                restaurant
+              </span>
+              <span>
+                Reservation for parties of 1 to {location === `Indoor` ? 10 : 4}
+              </span>
+            </>
+          )}
         </div>
         <div className={classes.iconWith}>
           <span
@@ -59,7 +69,7 @@ export default function Booking({ reservationType }) {
           >
             payments
           </span>
-          <span>$20 deposit per person</span>
+          <span>{reservationType === "Event Reservation" ? '$100 deposit for a token' : '$20 deposit per person'}</span>
         </div>
         <div className={classes.iconWith}>
           <span
@@ -68,7 +78,7 @@ export default function Booking({ reservationType }) {
           >
             receipt
           </span>
-          <span>$2 Processing Fee</span>
+          <span>{reservationType === "Event Reservation" ? '$10 Processing Fee' : '$2 Processing Fee'}</span>
         </div>
       </div>
       <BookingForm
@@ -81,6 +91,10 @@ export default function Booking({ reservationType }) {
         time={time}
         setTime={setTime}
         reservationType={reservationType}
+        reserverName={reserverName}
+        setReserverName={setReserverName}
+        reserverEmail={reserverEmail}
+        setReserverEmail={setReserverEmail}
       />
     </div>
   );

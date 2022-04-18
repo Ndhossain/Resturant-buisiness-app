@@ -1,3 +1,4 @@
+import { getDatabase, ref, set } from "firebase/database";
 import { useState } from "react";
 import Calendar from "react-calendar/dist/umd/Calendar";
 import classes from "../styles/BookingForm.module.css";
@@ -5,6 +6,7 @@ import "../styles/ReactCalender.css";
 import TimePicker from "./TimePicker";
 
 export default function BookingForm({
+  reservationType,
   location,
   setLocation,
   partySize,
@@ -13,13 +15,45 @@ export default function BookingForm({
   setDate,
   time,
   setTime,
-  reservationType,
+  reserverName,
+  setReserverName,
+  reserverEmail,
+  setReserverEmail,
 }) {
   const [x, setX] = useState(`none`);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const db = getDatabase();
+    const messageRef = ref(
+      db,
+      `information/reservation/${reservationType}/${date.getDate()}-${
+        date.getMonth() + 1
+      }-${date.getFullYear()}/${reserverName}`
+    );
+
+    await set(messageRef, {
+      reservationType: reservationType,
+      location: location,
+      partySize: partySize,
+      date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
+      time: time,
+      reserverName: reserverName,
+      reserverEmail: reserverEmail,
+    });
+
+    setReserverName("");
+    setReserverEmail("");
+    setLocation("Indoor");
+    setPartySize(1);
+    setDate(new Date());
+    setTime(``);
+    setX((prev) => (prev === `block` ? `none` : prev));
+  };
 
   return (
-    <form className={classes.bookingForm}>
+    <form className={classes.bookingForm} onSubmit={handleSubmit}>
       <div className={classes.location}>
         <label>Location</label>
         <select
@@ -109,6 +143,29 @@ export default function BookingForm({
           setTime={setTime}
           reservationType={reservationType}
         />
+      </div>
+      <div className={classes.resName}>
+        <label>Name</label>
+        <input
+          required
+          type={`text`}
+          onChange={(e) => setReserverName(e.target.value)}
+          value={reserverName}
+          placeholder={`Enter Reserver's Name`}
+        />
+      </div>
+      <div className={classes.resName}>
+        <label>Email</label>
+        <input
+          required
+          type={`email`}
+          onChange={(e) => setReserverEmail(e.target.value)}
+          value={reserverEmail}
+          placeholder={`Enter Reserver's Email`}
+        />
+      </div>
+      <div>
+      <input className={classes.subButton} type={`submit`} />
       </div>
     </form>
   );
