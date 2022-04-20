@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import classes from "../styles/Mealitem.module.css";
+import MealInfo from "./MealInfo";
 
 export default function Mealitems({ mealValue, category, handleSidebarMenu }) {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const url =
@@ -34,30 +34,32 @@ export default function Mealitems({ mealValue, category, handleSidebarMenu }) {
 
   const allValueResult = response?.map((item) => item.data.meals);
 
-
   return (
     <div className={classes.itemsSection}>
       <div className={classes.head}>
-      <h3>
-        {mealValue.categoryValue
-          ? mealValue.categoryValue
-          : mealValue.areaValue}
-      </h3>
-      <button onClick={handleSidebarMenu} className={classes.resItem}>
-        Categories
-      </button>
+        <h3>
+          {mealValue.categoryValue
+            ? mealValue.categoryValue
+            : mealValue.areaValue}
+        </h3>
+        <button onClick={handleSidebarMenu} className={classes.resItem}>
+          Categories
+        </button>
       </div>
-      <br/>
+      <br />
       <div className={classes.menuItems}>
         {loading && <div>Loading...</div>}
         {!loading &&
           allValueResult?.length >= 0 &&
           allValueResult.map((items) =>
             items.map((item) => (
+              <>
               <div className={classes.products} key={item.idMeal}>
                 <img src={item.strMealThumb} alt={item.strMeal} />
                 <span>{item.strMeal}</span>
               </div>
+              <MealInfo />
+              </>
             ))
           )}
       </div>

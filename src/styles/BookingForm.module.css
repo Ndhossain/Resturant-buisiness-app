@@ -67,12 +67,12 @@ label {
 
 .subButton {
   padding: 0.5em;
-  margin: 0.6em;
+  margin: 0.5em;
   background: transparent;
   outline: none;
   border: 1px solid #fff;
   cursor: pointer;
-  width: 100%;
+  width: calc(100% - 1em);
 }
 
 .subButton:hover {
