@@ -6,7 +6,6 @@ export default function MealInfo({ mealName, setMealInfo, setMealName }) {
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`,
     "GET"
   );
-  console.log(result);
 
   return (
     <div className={classes.mealDetails}>
@@ -29,7 +28,7 @@ export default function MealInfo({ mealName, setMealInfo, setMealName }) {
               alt={result?.meals[0].strMeal}
             />
             <h1>{result?.meals[0].strMeal}</h1>
-            <p>Area: {result?.meals[0].strArea}</p>
+            <p>Type: {result?.meals[0].strArea}</p>
             <p style={{ marginTop: `-1em` }}>
               Category: {result?.meals[0].strCategory}
             </p>
