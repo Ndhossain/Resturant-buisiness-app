@@ -27,7 +27,6 @@ export default function TimePicker({ time, setTime, reservationType }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reservationType]);
 
-  console.log(allTimes);
 
   return (
     <>
