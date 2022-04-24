@@ -8,4 +8,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 30;
+}
+
+.FullImage > img {
+    max-width: 80%;
+}
+
+.close {
+    display: inline;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }

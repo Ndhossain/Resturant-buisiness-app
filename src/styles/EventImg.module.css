@@ -1,20 +1,21 @@
 .imageGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
 }
 
 .images {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
-.images>img {
-    width: 100%;
-    height: 100%;
-    transition: transform .5s ease;
+.images > img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
-.images>img:hover {
-    transform: scale(1.1);
+.images > img:hover {
+  transform: scale(1.1);
 }
