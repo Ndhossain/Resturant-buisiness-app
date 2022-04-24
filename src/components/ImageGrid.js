@@ -21,7 +21,14 @@ export default function ImageGrid({ images = [], classes }) {
           </div>
         ))}
       </div>
-      {fullScreen && <FullImage images={images} indexNo={indexNo} />}
+      {fullScreen && (
+        <FullImage
+          images={images}
+          indexNo={indexNo}
+          setFullScreen={setFullScreen}
+          setIndexNo={setIndexNo}
+        />
+      )}
     </>
   );
 }
