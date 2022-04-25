@@ -8,6 +8,8 @@ export default function MessageForm({
   message,
   setMessage,
   handleSubmit,
+  messageHolder,
+  detailsHolder
 }) {
   return (
     <form onSubmit={handleSubmit} className={classes.messageForm}>
@@ -22,13 +24,13 @@ export default function MessageForm({
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="text"
-        placeholder="Enter Email"
+        placeholder={detailsHolder}
         required
       />
       <textarea
         onChange={(e) => setMessage(e.target.value)}
         value={message}
-        placeholder="Type Your Message"
+        placeholder={messageHolder}
         name="w3review"
         rows="4"
         cols="50"

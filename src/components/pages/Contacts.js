@@ -66,6 +66,8 @@ export default function Contacts() {
           message={message}
           setMessage={setMessage}
           handleSubmit={handleSubmit}
+          messageHolder={`Type Your Message`}
+          detailsHolder={`Enter Email`}
         />
       </div>
     </div>

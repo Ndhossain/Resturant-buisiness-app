@@ -83,6 +83,11 @@ export default function Menu() {
             </Link>
           </li>
           <li>
+            <Link onClick={handleMenuClick} to="/review">
+              REVIEW
+            </Link>
+          </li>
+          <li>
             <Link onClick={handleMenuClick} to="/contacts">
               CONTACTS
             </Link>

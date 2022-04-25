@@ -8,6 +8,7 @@ import Gallery from "./pages/Gallery";
 import Home from "./pages/Home";
 import Reservation from "./pages/Reservation";
 import Admin from "./pages/Admin"
+import Review from "./pages/Review";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="gallery" element={<Gallery />} />
+            <Route path="Review" element={<Review />} />
           </Routes>
         </Layout>
         <Routes>
