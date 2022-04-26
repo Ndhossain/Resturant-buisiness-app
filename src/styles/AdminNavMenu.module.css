@@ -1,0 +1,24 @@
+.menu {
+  width: 240px;
+  height: calc(100vh - 65px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.menu > li {
+  border-bottom: 1px solid black;
+}
+
+.menu > li:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.menu > li > a {
+  padding-left: 1em;
+  display: block;
+  padding-top: .7em;
+  padding-bottom: .7em;
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.5);
+}
