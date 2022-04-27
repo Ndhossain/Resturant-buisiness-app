@@ -10,7 +10,8 @@ export default function AdminNavMenu() {
   };
 
   return (
-    <div>
+    <div className={classes.sidebar}>
+      <h1>Royal cafe &amp; Resturant</h1>
       <ul className={classes.menu}>
         <li>
           <Link
@@ -58,6 +59,10 @@ export default function AdminNavMenu() {
           </Link>
         </li>
       </ul>
+      <div>
+        <span className="material-icons-outlined">admin_panel_settings</span>
+        <span className="material-icons-outlined">account_circle</span>
+      </div>
     </div>
   );
 }
