@@ -19,7 +19,7 @@
   margin: 0 auto;
   border-radius: 5px;
   margin-top: 30px;
-  height: 75vh;
+  height: 70vh;
 }
 
 .menu > li {
@@ -40,4 +40,17 @@
 .active {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
+}
+
+.downbar {
+  padding: 1em;
+}
+
+.downbarItem {
+  padding: .3em;
+}
+
+.downbarItem:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }

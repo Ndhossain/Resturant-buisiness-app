@@ -59,9 +59,15 @@ export default function AdminNavMenu() {
           </Link>
         </li>
       </ul>
-      <div>
-        <span className="material-icons-outlined">admin_panel_settings</span>
-        <span className="material-icons-outlined">account_circle</span>
+      <div className={classes.downbar}>
+        <div className={classes.downbarItem}>
+          <span style={{fontSize: `18px`, marginRight: `.3em`}} className="material-icons-outlined">admin_panel_settings</span>
+          Admin panel settings
+        </div>
+        <div className={classes.downbarItem}>
+          <span style={{fontSize: `18px`, marginRight: `.3em`}} className="material-icons-outlined">account_circle</span>
+          Profile Manager
+        </div>
       </div>
     </div>
   );
