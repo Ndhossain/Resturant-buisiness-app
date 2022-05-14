@@ -32,3 +32,14 @@
   border: none;
   color: #fff;
 }
+
+.addButton {
+  background: rgba(255, 255, 255, 0.1);
+  padding: .5em;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

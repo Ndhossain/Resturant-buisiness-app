@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import classes from "../styles/AddImage.module.css";
+import {
+  getDatabase,
+  orderByKey,
+  query,
+  ref,
+  set,
+} from "firebase/database";
 
-export default function AddImage() {
+export default function AddImage({value, set}) {
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState("");
 
@@ -9,6 +16,11 @@ export default function AddImage() {
     console.log(file);
     console.log(url);
   }, [file, url]);
+
+  const handleSubmit = async () => {
+    const db = getDatabase();
+    const imageRef = ref(db, )
+  }
 
   return (
     <div className={classes.container}>
@@ -34,7 +46,7 @@ export default function AddImage() {
             setFile(null);
           }}
         />
-        <button>Add Image</button>
+        <button className={classes.addButton}>Add Image</button>
       </div>
     </div>
   );

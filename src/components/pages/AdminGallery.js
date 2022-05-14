@@ -7,6 +7,7 @@ import useGallery from "../hooks/useGallery";
 export default function AdminGallery() {
   const [open, setOpen] = useState(false);
   const [addImage, setAddImage] = useState(false);
+  const [value, setValue] = useState('')
   const { loading, error, galleryResult } = useGallery();
 
   return (
@@ -30,7 +31,10 @@ export default function AdminGallery() {
             <span
               style={{ cursor: `pointer` }}
               className="material-icons-outlined"
-              onClick={() => setAddImage(!addImage)}
+              onClick={() => {
+                setAddImage(!addImage);
+                setValue('event')
+              }}
             >
               add
             </span>
@@ -73,7 +77,7 @@ export default function AdminGallery() {
             </span>
           </div>
         ))}
-        {addImage && <AddImage />}
+        {addImage && <AddImage value={value} setAddImage={setAddImage} />}
     </div>
   );
 }
