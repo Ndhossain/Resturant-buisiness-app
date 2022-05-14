@@ -7,7 +7,7 @@ import useGallery from "../hooks/useGallery";
 export default function AdminGallery() {
   const [open, setOpen] = useState(false);
   const [addImage, setAddImage] = useState(false);
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("");
   const { loading, error, galleryResult } = useGallery();
 
   return (
@@ -21,7 +21,10 @@ export default function AdminGallery() {
           <>
             <Link
               to="images"
-              state={{ image: galleryResult[0], title: `event` }}
+              state={{
+                image: galleryResult[0],
+                title: `event`,
+              }}
             >
               <span style={{ cursor: `pointer` }}>
                 {galleryResult.length > 0 &&
@@ -33,7 +36,7 @@ export default function AdminGallery() {
               className="material-icons-outlined"
               onClick={() => {
                 setAddImage(!addImage);
-                setValue('event')
+                setValue("event");
               }}
             >
               add
@@ -72,12 +75,18 @@ export default function AdminGallery() {
             <span
               style={{ cursor: `pointer` }}
               className="material-icons-outlined"
+              onClick={() => {
+                setAddImage(true);
+                setValue(`${title[0]}`);
+              }}
             >
               add
             </span>
           </div>
         ))}
-        {addImage && <AddImage value={value} setAddImage={setAddImage} />}
+      {addImage && (
+        <AddImage value={value} setAddImage={setAddImage} setValue={setValue} />
+      )}
     </div>
   );
 }

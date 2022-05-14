@@ -13,7 +13,7 @@ export default function Review() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [reviewNo, setReviewNo] = useState()
+  const [reviewNo, setReviewNo] = useState();
 
   useEffect(() => {
     async function review() {
@@ -21,11 +21,11 @@ export default function Review() {
       const galleryRef = ref(db, `information/review/`);
       const galleryQuery = query(galleryRef, orderByKey());
       const snapShot = await get(galleryQuery);
-      setReviewNo(snapShot.val().length)
+      setReviewNo(snapShot.val().length);
     }
-  
-    review()
-  }, [])
+
+    review();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

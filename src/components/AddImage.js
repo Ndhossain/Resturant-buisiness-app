@@ -1,52 +1,81 @@
-import { useEffect, useState } from "react";
-import classes from "../styles/AddImage.module.css";
 import {
+  get,
   getDatabase,
   orderByKey,
   query,
   ref,
   set,
 } from "firebase/database";
+import { useEffect, useState } from "react";
+import classes from "../styles/AddImage.module.css";
 
-export default function AddImage({value, set}) {
-  const [file, setFile] = useState(null);
+export default function AddImage({ value, setAddImage, setValue }) {
   const [url, setUrl] = useState("");
+  const [galVal, setGalVal] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(file);
-    console.log(url);
-  }, [file, url]);
+    async function galleryVal() {
+      setLoading(true);
+      const db = getDatabase();
+      const galleryRef = ref(
+        db,
+        `gallery/${value === "event" ? "events" : `resturant/${value}`}`
+      );
+      const galleryQuery = query(galleryRef, orderByKey());
+      const snapShot = await get(galleryQuery);
+      setGalVal(snapShot.val().length);
+      setLoading(false);
+    }
+
+    galleryVal();
+  }, [galVal, value]);
 
   const handleSubmit = async () => {
     const db = getDatabase();
-    const imageRef = ref(db, )
-  }
+    const imageRef = ref(
+      db,
+      `gallery/${value === "event" ? "events" : `resturant/${value}`}/${
+        galVal ? galVal : 0
+      }`
+    );
+
+    await set(imageRef, { url: url });
+
+    setUrl("");
+  };
 
   return (
     <div className={classes.container}>
       <div className={classes.formField}>
-        <input
-          type="file"
-          className={classes.fileInput}
-          name="image"
-          accept="image/png, image/jpeg, image/jpg"
-          onChange={(e) => {
-            setFile(e.target.files[0]);
-            setUrl("");
-          }}
-        />
-        <span>or</span>
-        <input
-          className={classes.fileInput}
-          type="text"
-          value={url}
-          placeholder="Give a url"
-          onChange={(e) => {
-            setUrl(e.target.value);
-            setFile(null);
-          }}
-        />
-        <button className={classes.addButton}>Add Image</button>
+        {loading && <span>Loading...</span>}
+        {!loading && (
+          <>
+            <input
+              className={classes.fileInput}
+              type="text"
+              value={url}
+              placeholder="Give a url"
+              onChange={(e) => {
+                setUrl(e.target.value);
+              }}
+            />
+            <div>
+              <button
+                onClick={() => {
+                  setAddImage(false);
+                  setValue("");
+                }}
+                className={classes.addButton}
+              >
+                Cancel
+              </button>
+              <button onClick={handleSubmit} className={classes.addButton}>
+                Add Image
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

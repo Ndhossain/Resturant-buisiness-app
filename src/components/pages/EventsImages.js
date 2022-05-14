@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import classes from "../../styles/EventImage.module.css";
+import AddImage from "../AddImage";
 
 export default function EventsImages() {
+  const [addImage, setAddImage] = useState(false);
+  const [value, setValue] = useState("");
   const location = useLocation();
   const { state } = location;
   const { image, title } = state;
@@ -25,7 +29,10 @@ export default function EventsImages() {
             alt={title}
           />
         ))}
-        <div className={classes.addMore}>
+        <div className={classes.addMore} onClick={() => {
+          setAddImage(true);
+          setValue(title)
+        }}>
           <span
             style={{ fontSize: `40px` }}
             className="material-icons-outlined"
@@ -34,6 +41,7 @@ export default function EventsImages() {
           </span>
         </div>
       </div>
+      {addImage && <AddImage setAddImage={setAddImage} value={value} setValue={setValue} />}
     </div>
   );
 }
