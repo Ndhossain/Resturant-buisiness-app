@@ -10,6 +10,8 @@ export default function AdminGallery() {
   const [value, setValue] = useState("");
   const { loading, error, galleryResult } = useGallery();
 
+  console.log(galleryResult)
+
   return (
     <div>
       <h1>Gallery</h1>
@@ -23,7 +25,7 @@ export default function AdminGallery() {
               to="images"
               state={{
                 image: galleryResult[0],
-                title: `event`,
+                title: `events`,
               }}
             >
               <span style={{ cursor: `pointer` }}>
@@ -36,7 +38,7 @@ export default function AdminGallery() {
               className="material-icons-outlined"
               onClick={() => {
                 setAddImage(!addImage);
-                setValue("event");
+                setValue("events");
               }}
             >
               add

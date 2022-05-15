@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import classes from "../styles/AddImage.module.css";
 
-export default function AddImage({ value, setAddImage, setValue }) {
+export default function AddImage({ value, setAddImage, setValue, addImage }) {
   const [url, setUrl] = useState("");
   const [galVal, setGalVal] = useState();
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export default function AddImage({ value, setAddImage, setValue }) {
       const db = getDatabase();
       const galleryRef = ref(
         db,
-        `gallery/${value === "event" ? "events" : `resturant/${value}`}`
+        `gallery/${value === "events" ? "events" : `resturant/${value}`}`
       );
       const galleryQuery = query(galleryRef, orderByKey());
       const snapShot = await get(galleryQuery);
@@ -35,7 +35,7 @@ export default function AddImage({ value, setAddImage, setValue }) {
     const db = getDatabase();
     const imageRef = ref(
       db,
-      `gallery/${value === "event" ? "events" : `resturant/${value}`}/${
+      `gallery/${value === "events" ? "events" : `resturant/${value}`}/${
         galVal ? galVal : 0
       }`
     );
@@ -63,7 +63,7 @@ export default function AddImage({ value, setAddImage, setValue }) {
             <div>
               <button
                 onClick={() => {
-                  setAddImage(false);
+                  setAddImage(!addImage);
                   setValue("");
                 }}
                 className={classes.addButton}

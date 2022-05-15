@@ -1,0 +1,44 @@
+.fullSize {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.imageSec {
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.buttonSec {
+  display: flex;
+  gap: .5em;
+  margin-top: 15px;
+}
+
+.delButton {
+  padding: 6px;
+  outline: none;
+  background: red;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.closeButton {
+  padding: 6px;
+  outline: none;
+  background: rgb(65, 65, 245);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
