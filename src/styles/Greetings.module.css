@@ -1,0 +1,38 @@
+.greetContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.greetCard {
+  background-color: #2d2013;
+  height: 200px;
+  min-width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+
+.greetCard > button {
+  margin-top: 15px;
+  padding: 6px 12px;
+  border: none;
+  background: #b17d04;
+  cursor: pointer;
+}
+
+.greetCard > button:hover {
+  background: #7a5809;
+  transition: 0.2s ease;
+}
